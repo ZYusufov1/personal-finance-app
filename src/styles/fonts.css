@@ -1,0 +1,39 @@
+.text-preset-1 {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    letter-spacing: 0;
+}
+
+.text-preset-2 {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0;
+}
+
+.text-preset-3 {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0;
+}
+
+.text-preset-4 {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0;
+}
+
+.text-preset-5 {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 0;
+}
