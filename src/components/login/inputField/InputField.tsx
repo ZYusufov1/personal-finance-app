@@ -1,4 +1,5 @@
 import { ErrorMessage, Field } from 'formik'
+import classNames from 'classnames'
 
 const InputField = ({
     name,
@@ -19,12 +20,14 @@ const InputField = ({
 		<label className="text-preset-5" style={{ color: 'var(--color-grey-500)' }}>
 			{label}
 		</label>
+
 		<div className="relative w-full">
 			<Field
 				name={name}
 				type={isPassword && showPassword ? 'text' : type}
 				className="h-[45px] rounded-b-lg rounded-t-lg w-full pr-10 p-1.5"
 			/>
+
 			{isPassword && togglePasswordVisibility && (
 				<button
 					type="button"
@@ -35,7 +38,12 @@ const InputField = ({
 				</button>
 			)}
 		</div>
-		<ErrorMessage name={name} component="div" className="text-red-500 text-sm" />
+
+		<ErrorMessage
+			name={name}
+			component="div"
+			className={classNames('w-full text-red-500 text-right', 'text-preset-5')}
+		/>
 	</div>
 )
 

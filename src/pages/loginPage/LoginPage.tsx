@@ -9,6 +9,8 @@ import ToggleLink from '../../components/login/toggleLink/ToggleLink.tsx'
 import LoginImage from '../../components/login/loginImage/LoginImage.tsx'
 import FormHeader from '../../components/login/formHeader/FormHeader.tsx'
 import SubmitButton from '../../components/login/submitButton/SubmitButton.tsx'
+import useMediaQuery from '../../utils/useMediaQuery.ts'
+import classNames from 'classnames'
 
 interface FormValues {
 	name: string;
@@ -20,6 +22,7 @@ const LoginPage = () => {
 	const [isSignUp, setIsSignUp] = useState(false)
 	const [message, setMessage] = useState<string | null>(null)
 	const [showPassword, setShowPassword] = useState(false)
+	const isMobile = useMediaQuery('(max-width: 768px)')
 
 	const togglePasswordVisibility = () => setShowPassword(!showPassword)
 
@@ -84,11 +87,20 @@ const LoginPage = () => {
 	}
 
 	return (
-		<div className="flex flex-row h-full">
-			<LoginImage />
-			<div className="flex justify-center items-center w-full">
-				<div className="max-w-[560px] w-full flex flex-col items-start gap-8 p-8">
+		<div className={!isMobile ? 'flex flex-row h-full' : 'flex flex-col h-full'}>
+			<LoginImage isMobile={isMobile}/>
+
+			<div className="flex justify-center items-center w-full h-full">
+				<div
+					className={classNames(
+						'max-w-[560px] w-full',
+						'flex flex-col items-start bg-white rounded-b-xl rounded-t-xl',
+						'gap-8 p-5 pt-6 pb-6 ml-4 mr-4',
+						'sm:ml-0 sm:mr-0 sm:p-8'
+					)}
+				>
 					<FormHeader isSignUp={isSignUp} />
+
 					{message && (
 						<div
 							className="text-preset-4 text-center mb-4"
@@ -97,6 +109,7 @@ const LoginPage = () => {
 							{message}
 						</div>
 					)}
+
 					<Formik
 						initialValues={{ name: '', email: '', password: '' }}
 						validationSchema={getValidationSchema(isSignUp)}
@@ -104,7 +117,9 @@ const LoginPage = () => {
 					>
 						<Form className="flex flex-col gap-4 w-full">
 							<InputField name="name" label="Name" />
+
 							{isSignUp && <InputField name="email" label="Email" type="email" />}
+
 							<InputField
 								name={'password'}
 								type={'password'}
@@ -113,9 +128,11 @@ const LoginPage = () => {
 								showPassword={showPassword}
 								togglePasswordVisibility={togglePasswordVisibility}
 							/>
+
 							<SubmitButton label={isSignUp ? 'Create Account' : 'Login'} />
 						</Form>
 					</Formik>
+
 					<ToggleLink isSignUp={isSignUp} onClick={() => setIsSignUp(!isSignUp)} />
 				</div>
 			</div>

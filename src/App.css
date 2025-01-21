@@ -10,3 +10,10 @@ input {
   border: 1px solid var(--color-beige-500, #98908B);
   border-radius: 8px;
 }
+
+@media (max-width: 768px) {
+  #root {
+    height: 100svh;
+    width: 100svw;
+  }
+}
